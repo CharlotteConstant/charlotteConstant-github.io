@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<h1>Le detail du pokemon</h1>
+
+<div class="card m-4" style="width: 24rem;">
+  <img src="{{asset('uploads/images/pokemons/' ~ lePokemon.image)}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{lePokemon.name}}</h5>
+    <p class="card-text">{{lePokemon.description}}</p>
+    <a href="{{path("pokemon")}}" class="btn btn-primary">retours aux pokemons</a>
+  </div>
+</div>
+
+{% endblock %}

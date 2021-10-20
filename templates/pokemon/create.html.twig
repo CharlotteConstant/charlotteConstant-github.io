@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formulairePokemon 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+<div class="container">
+{% if creation %}
+<h1>Coucou je suis le formulaire de création</h1>
+{% else %}
+<h1>Coucou je suis le formulaire de modification</h1>
+{% endif %}
+
+{{ form_start(formulairePokemon)}}
+
+{{form_row(formulairePokemon.name, {'label': 'nom du pokemon'})}}
+{{form_row(formulairePokemon.categorie)}}
+{{form_row(formulairePokemon.description, {'label': 'description du pokemon'})}}
+{{form_row(formulairePokemon.image, {'label': 'image du pokemon'})}}
+<button class="btn btn-success" type="submit">
+{% if creation %}
+créer le pokemon
+{% else %}
+Modifier le pokemon
+{% endif %}
+</button>
+
+{{ form_end(formulairePokemon)}}
+
+ <a href="{{path("pokemon")}}" class="btn btn-primary">retours aux pokemons</a>
+
+</div>
+
+
+{% endblock %}

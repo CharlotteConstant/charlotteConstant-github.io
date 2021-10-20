@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formulaireCategory 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+<h1>Je suis le formulaire de creation de nouvelle categorie</h1>
+
+{{ form_start(formulaireCategory)}}
+{{form_row(formulaireCategory.name)}}
+{{form_row(formulaireCategory.description)}}
+<button class="btn btn-success" type="submit">Envoyer</button>
+
+{{ form_end(formulaireCategory)}}
+
+
+ <a href="{{path("pokemon")}}" class="btn btn-primary">retours aux pokemons</a>
+
+
+{% endblock %}

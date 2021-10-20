@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PokemonController!{% endblock %}
+
+{% block body %}
+<div class="container">
+<h1 class="text-center pt-4 pb-4 bg-secondary text-white mb-4">Bienvenue sur le pokedex des pokemons</h1>
+
+<div class="text-center shadow-lg p-1 mb-5 bg-body rounded">
+<h4 class="mt-2">Espace création</h4>
+<a href="{{path('newPokemon')}}" class="btn btn-success mt-3 mb-5">Nouveau pokemon</a>
+<a href="{{path('newCategory')}}" class="btn btn-warning mt-3 mb-5">Créer nouvelle catégorie</a>
+</div>
+
+<div class="row">
+<h2 class="mb-3">Catégories disponibles: </h2>
+<hr>
+{% for pokemon in lesPokemons %}
+<div class="col-2">
+   <span class="badge bg-secondary text-light ms-2 mb-3"><strong>{{pokemon.categorie.name}}</strong></span>
+</div>
+{% endfor %}
+<hr>
+<h2 class="mb-4 mt-4">Liste des pokémons capturés:</h2>
+{% for pokemon in lesPokemons %}
+<div class="card col-4 m-3" style="width: 20rem;">
+  <img src="{{asset('uploads/images/pokemons/' ~ pokemon.image)}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{pokemon.name}}</h5>
+    <p class="card-text">{{pokemon.description}}</p>
+    <span class="badge bg-dark text-light mb-3"><strong>{{pokemon.categorie.name}}</strong>: {{pokemon.categorie.description}}</span>
+    <hr>
+   
+   <div class="text-center">
+    <a href="{{path("showPokemon", {id: pokemon.id})}}" class="btn btn-primary mb-2">voir le détails du pokemon</a>
+    
+    <a href="{{path("editPokemon", {id: pokemon.id})}}" class="btn btn-warning mt-2">editer le pokemon</a>
+    <a href="{{path("deletePokemon", {id: pokemon.id})}}" class="btn btn-danger mt-1">supprimer le pokemon</a>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+</div>
+{% endblock %}
